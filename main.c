@@ -6,7 +6,7 @@
 /*   By: arobion <arobion@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/23 14:43:54 by arobion           #+#    #+#             */
-/*   Updated: 2017/11/24 11:49:11 by arobion          ###   ########.fr       */
+/*   Updated: 2017/11/27 14:05:07 by pnardozi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,12 +17,13 @@ int		main(int argc, char **argv)
 	char    *line;
 	int     fd; 
 	int		i;
-
+	if (argc)
+		i = 0;
 	i = 0;
 	fd = open(argv[1], O_RDONLY);
 	//	while ((i = get_next_line(fd, &line)))
 	//		dprintf(1, "retour fonction = %d\n", i);
-	i = get_next_line(fd, &line);
+	i = get_next_line(1, &line);
 	ft_strdel(&line);
 	/*	dprintf(1, "retour fonction = %d\n", i);
 	iint	fd1 = open(argv[2], O_RDONLY);
