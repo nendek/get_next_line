@@ -6,7 +6,7 @@
 /*   By: pnardozi <pnardozi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/27 13:40:17 by pnardozi          #+#    #+#             */
-/*   Updated: 2017/11/27 13:40:32 by pnardozi         ###   ########.fr       */
+/*   Updated: 2017/11/29 15:56:11 by pnardozi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -97,6 +97,8 @@ int					get_next_line(const int fd, char **line)
 	tmp = NULL;
 	if (!(list = ft_list(&list, fd, tmp)))
 		return (-1);
+	if (list->data == NULL)
+		return (0);
 	if (list->data[0] == '\0')
 	{
 		*line = NULL;

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: arobion <arobion@student.42.fr>            +#+  +:+       +#+        */
+/*   By: pnardozi <pnardozi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/11/23 14:43:54 by arobion           #+#    #+#             */
-/*   Updated: 2017/11/27 14:05:07 by pnardozi         ###   ########.fr       */
+/*   Created: 2017/11/29 12:32:34 by pnardozi          #+#    #+#             */
+/*   Updated: 2017/11/29 15:56:28 by pnardozi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,9 +21,10 @@ int		main(int argc, char **argv)
 		i = 0;
 	i = 0;
 	fd = open(argv[1], O_RDONLY);
-	//	while ((i = get_next_line(fd, &line)))
-	//		dprintf(1, "retour fonction = %d\n", i);
-	i = get_next_line(1, &line);
+//		while ((i = get_next_line(fd, &line)))
+//			dprintf(1, "retour fonction = %d phrase : %s\n", i, line);
+	i = get_next_line(fd, &line);
+	printf("line : %s\n", line);
 	ft_strdel(&line);
 	/*	dprintf(1, "retour fonction = %d\n", i);
 	iint	fd1 = open(argv[2], O_RDONLY);
