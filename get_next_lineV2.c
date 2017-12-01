@@ -26,10 +26,46 @@ static int			ft_eol(char const *s, int c)
 	return (0);
 }
 
-int				get_next_line(const int fd, char **list)
+static int			ft_cpy(const int fd, char *save)
 {
-	static t_gnl_list	*list;
-	char				*tmp;
+	char *buff;
+	size_t end;
 
-	tmp = NULL;
-	
+	if (!(buff = ft_strnew(BUFF_SIZE)))
+		return (-1);
+	if ((end = read(fd, buff, BUFF_SIZE)) == -1)
+		return (-1);
+	ft_strcpy(save, buff);
+	ft_strdel(&buff);
+	if (end == 0)
+		return (0);
+	return (1);
+}
+
+int				get_next_line(const int fd, char **line)
+{
+	static char	*save;
+	char		buff;
+	char		*tmp;
+	int		i;
+
+	i = 0;
+	if (!save)
+	{
+		if (!(save = ft_strnew(BUFF_SIZE)))
+			return (-1);
+		ft_cpy(fd, save);
+	}
+	if (save[0] != '\0')
+	{
+		i = ft_eol(save, '\n');
+		if (!(*line = ft_strsub(save, 0, i)))
+			return (-1);
+		i++;
+		tmp = ft_strsub(save, i, ft_strlen(save) - i);
+		ft_strdel(&save);
+		save = ft_strdup(tmp);
+		ft_strdel(&tmp);
+	}
+	return (0);
+}
