@@ -26,7 +26,7 @@ static int			ft_eol(char const *s, int c)
 	return (0);
 }
 
-static int			ft_cpy(const int fd, char *save)
+static int			ft_read(const int fd, char *save)
 {
 	char *buff;
 	size_t end;
@@ -42,37 +42,43 @@ static int			ft_cpy(const int fd, char *save)
 	return (1);
 }
 
+static int			ft_cpy(char **line, int fd, char **str)
+{
+	char	*tmp;
+	int	i;
+	
+	i = 0;
+	if (!*str)
+	{
+		if (!(*str = ft_strnew(BUFF_SIZE)))
+			return (-1);
+		ft_read(fd, *str);
+	}
+	if (str[0] != '\0')
+	{
+		i = ft_eol(*str, '\n');
+		if (!(*line = ft_strsub(*str, 0, i)))
+			return (-1);
+		i++;
+		if (i > ft_strlen(*str))
+		{
+			free(str);
+			*str = ft_strnew(1);
+			*str [0] = '\0';
+			return (1);
+		}
+		tmp = ft_strsub(*str, i, ft_strlen(*str) - i);
+		ft_strdel(str);
+		*str = ft_strdup(tmp);
+		ft_strdel(&tmp);
+	}
+	return (0);
+}
+
 int				get_next_line(const int fd, char **line)
 {
 	static char	*save;
-	char		buff;
-	char		*tmp;
-	int		i;
 
-	i = 0;
-	if (!save)
-	{
-		if (!(save = ft_strnew(BUFF_SIZE)))
-			return (-1);
-		ft_cpy(fd, save);
-	}
-	if (save[0] != '\0')
-	{
-		i = ft_eol(save, '\n');
-		if (!(*line = ft_strsub(save, 0, i)))
-			return (-1);
-		i++;
-		if (i > ft_strlen(save))
-		{
-			free(save);
-			save = ft_strnew(1);
-			save [0] = '\0';
-			return (1);
-		}
-		tmp = ft_strsub(save, i, ft_strlen(save) - i);
-		ft_strdel(&save);
-		save = ft_strdup(tmp);
-		ft_strdel(&tmp);
-	}
+	return (ft_cpy(line, fd, &save));
 	return (0);
 }
