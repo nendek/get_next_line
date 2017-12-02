@@ -62,6 +62,13 @@ int				get_next_line(const int fd, char **line)
 		if (!(*line = ft_strsub(save, 0, i)))
 			return (-1);
 		i++;
+		if (i > ft_strlen(save))
+		{
+			free(save);
+			save = ft_strnew(1);
+			save [0] = '\0';
+			return (1);
+		}
 		tmp = ft_strsub(save, i, ft_strlen(save) - i);
 		ft_strdel(&save);
 		save = ft_strdup(tmp);
