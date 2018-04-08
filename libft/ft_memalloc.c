@@ -14,10 +14,12 @@
 
 void	*ft_memalloc(size_t size)
 {
-	char	*p;
+	unsigned char	*str;
 
-	if (!(p = (void*)malloc(sizeof(*p) * size)))
+	if (size >= 2147483647)
 		return (NULL);
-	ft_bzero(p, size);
-	return (p);
+	if (!(str = (unsigned char*)malloc(sizeof(unsigned char) * (size + 1))))
+		return (NULL);
+	ft_memset(str, 0, size);
+	return (&str[0]);
 }

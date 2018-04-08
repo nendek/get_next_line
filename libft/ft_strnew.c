@@ -14,11 +14,10 @@
 
 char	*ft_strnew(size_t size)
 {
-	char	*p;
+	unsigned char	*str;
 
-	if (!(p = ft_memalloc(size + 1)))
+	if (!(str = ft_memalloc(size)))
 		return (NULL);
-	ft_strclr(p);
-	p[size] = 0;
-	return (p);
+	str[size] = '\0';
+	return ((char*)&str[0]);
 }

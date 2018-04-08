@@ -6,7 +6,7 @@
 /*   By: pnardozi <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/07 16:07:14 by pnardozi          #+#    #+#             */
-/*   Updated: 2017/11/27 14:45:56 by pnardozi         ###   ########.fr       */
+/*   Updated: 2017/12/15 17:39:18 by pnardozi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,23 @@ typedef struct		s_list
 	struct s_list	*next;
 }					t_list;
 
+int				ft_eol(char *str);
+int				ft_is_in_pos(char const *s, int c);
+char				*ft_itoc(int *str);
+int					ft_count_var(long long var);
+int					ft_is_in_at(char *str, char c, int lentgth);
+int					*ft_strdupw(int *str);
+int					*ft_wctoi(wchar_t *str);
+int					ft_count_unsigned_var(unsigned long int var);
+int					*ft_ctoi(char *str);
+int					ft_decim(char *str);
+long long			ft_long_atoi(const char *str);
+char				*ft_long_itoa(long long n);
+void				ft_putlong(long long n);
+void				ft_puttab(char **str);
+void				ft_strcap(char *s);
+char				*ft_unsigned_itoa(unsigned long int n);
+int					ft_wputchar(int c);
 void				*ft_memset(void *s, int c, size_t n);
 void				ft_bzero(void *s, size_t n);
 void				*ft_memcpy(void *dest, const void *src, size_t n);

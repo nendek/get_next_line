@@ -6,7 +6,7 @@
 /*   By: pnardozi <pnardozi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/27 13:40:50 by pnardozi          #+#    #+#             */
-/*   Updated: 2017/11/27 14:01:30 by pnardozi         ###   ########.fr       */
+/*   Updated: 2017/12/15 11:24:14 by pnardozi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,12 +20,16 @@
 # define BUFF_SIZE 32
 # include "libft/libft.h"
 
+#
+
 typedef	struct		s_gnl
 {
 	char			*data;
 	int				fd;
 	struct s_gnl	*next;
 }					t_gnl_list;
+
+int					get_next_line_multi(const int fd, char **line);
 int					get_next_line(const int fd, char **line);
 
 #endif
